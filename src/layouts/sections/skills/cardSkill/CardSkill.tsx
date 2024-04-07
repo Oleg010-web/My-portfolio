@@ -45,7 +45,7 @@ const SkillTextStyled = styled.p`
   font-size: 14px;
 `
 
-const IconWrapper = styled.div`
+export const IconWrapper = styled.div`
   position: relative;
 
   &::before {
