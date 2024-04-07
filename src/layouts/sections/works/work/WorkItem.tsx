@@ -1,4 +1,7 @@
 import styled from "styled-components"
+import { LinkItem } from "../../../../components/LinkItem"
+import { theme } from "../../../../styles/Theme"
+import { Button } from "../../../../components/Button"
 
 type WorkItemPropsType = {
   path: string,
@@ -9,35 +12,87 @@ type WorkItemPropsType = {
 export const WorkItem = (props: WorkItemPropsType)=> {
   return (
     <WorkItemStyled>
-      <ImageStyled src={props.path}/>
-      <TitleStyled>{props.title}</TitleStyled>
-      <TextStyled>{props.text}</TextStyled>
-      <LinkStyled href="#">demo</LinkStyled>
-      <LinkStyled href="#">code</LinkStyled>
+      <ImageWrapper>
+        <ImageStyled src={props.path}/>
+        <Button>VIEW PROJECT</Button>
+      </ImageWrapper>
+      <Desription>
+        <TitleStyled>{props.title}</TitleStyled>
+        <TextStyled>{props.text}</TextStyled>
+        <LinkItem href="#">demo</LinkItem>
+        <LinkItem href="#">code</LinkItem>
+      </Desription>
     </WorkItemStyled>
   )
 }
 
 const WorkItemStyled = styled.div`
-  background-color: #e1b226;
+  background-color: ${theme.colors.secondaryBg};
   max-width: 540px;
   width: 100%;
   object-fit: cover;
+
+  ${LinkItem}{
+    padding: 10px 0;
+
+    & + ${LinkItem}{
+      margin-left: 20px;
+    }
+  }
 `
 
 const ImageStyled = styled.img`
   width: 100%;
   height: 260px;
+  object-fit: cover;
 `
 
-const LinkStyled = styled.a`
-  
-`
+
 
 const TitleStyled = styled.h3`
   
 `
 
 const TextStyled = styled.p`
-  
+  margin-top: 14px;
+  margin-bottom: 10px;
+`
+
+const Desription = styled.div`
+  padding: 25px 20px;
+`
+
+const ImageWrapper = styled.div`
+  position: relative;
+
+  ${Button}{
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    &::before{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &:hover{
+    ${Button}{
+      opacity: 1;
+    }
+
+    &::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+  }
+  }
+
 `
