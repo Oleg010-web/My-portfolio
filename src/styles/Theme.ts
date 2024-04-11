@@ -8,5 +8,10 @@ export const theme = {
 
     borderColor: "#4A4A4A",
     placeholderColor: "#495857"
+  },
+
+  media: {
+    tablet: "screen and (max-width: 768px)",
+    mabile: "screen and (max-width: 576px)"
   }
 }
