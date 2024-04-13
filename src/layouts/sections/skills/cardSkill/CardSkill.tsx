@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { Icon } from "../../../../components/icon/Icon"
 import { FlexWrapper } from "../../../../components/FlexWrapper"
+import { theme } from "../../../../styles/Theme"
 
 
 type CardSkillPropsType = {
@@ -26,8 +27,13 @@ export const CardSkill = (props: CardSkillPropsType) => {
 
 
 const CardSkillStyled = styled.div`
-  max-width: 380px;
+  max-width: 330px;
+  flex-grow: 1;
   padding: 62px 20px 40px;
+
+  @media ${theme.media.mabile} {
+    padding: 62px 0 40px;
+  }
 `
 
 const SkillTitleStyled = styled.h3`
