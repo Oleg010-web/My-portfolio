@@ -28,9 +28,9 @@ export const WorkItem = (props: WorkItemPropsType)=> {
 
 const WorkItemStyled = styled.div`
   background-color: ${theme.colors.secondaryBg};
-  max-width: 540px;
-  width: 100%;
+  width: 330px;
   object-fit: cover;
+  flex-grow: 1;
 
   ${LinkItem}{
     padding: 10px 0;
@@ -38,6 +38,10 @@ const WorkItemStyled = styled.div`
     & + ${LinkItem}{
       margin-left: 20px;
     }
+  }
+
+  @media ${theme.media.desktop} {
+    max-width: 540px;
   }
 `
 
@@ -78,12 +82,7 @@ const ImageWrapper = styled.div`
     }
   }
 
-  &:hover{
-    ${Button}{
-      opacity: 1;
-    }
-
-    &::before{
+  &::before{
     content: '';
     position: absolute;
     left: 0;
@@ -92,7 +91,26 @@ const ImageWrapper = styled.div`
     bottom: 0;
     background: rgba(0,0,0,0.3);
     backdrop-filter: blur(4px);
+    opacity: 0;
+  }
+
+  &:hover{
+    ${Button}{
+      opacity: 1;
+    }
+
+    &::before{
+      opacity: 1;
   }
   }
 
+  @media ${theme.media.tablet} {
+    ${Button}{
+      opacity: 1;
+    }
+
+    &::before{
+      opacity: 1;
+  }
+  }
 `
